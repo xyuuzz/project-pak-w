@@ -12,7 +12,7 @@
             <div class="carousel-inner">
                 @foreach($products as $product)
                     <div class="carousel-item {{$loop->iteration == 1 ? "active" : ""}}">
-                        <img onclick="setDataModal({{$product->id}})" style="cursor: pointer; width:90%; height: 400px;" src="{{asset("storage/product_photo/$product->photo")}}" class="d-block w-100" data-toggle="modal" data-target="#exampleModal">
+                        <img style="cursor: pointer; width:90%; height: 400px;" src="{{asset("storage/product_photo/$product->photo")}}" class="d-block w-100" data-toggle="modal" data-target="#exampleModal" onclick="setDataModal({{$product->id}})">
                         <div class="carousel-caption d-none d-md-block font-weight-bold">
                             <h5>{{$product->name}}</h5>
                             <p>
@@ -39,7 +39,7 @@
             @foreach($products as $product)
                 <div class="produk">
                     <div class="image-wrapper">
-                        <img class="recomendation-product-photo" src="{{asset("storage/product_photo/$product->photo")}}" alt="">
+                        <img class="recomendation-product-photo" src="{{asset("storage/product_photo/$product->photo")}}" alt="Foto rekomendasi produk" data-toggle="modal" data-target="#exampleModal" onclick="setDataModal({{$product->id}})">
                         <div class="icon" style="z-index: 100">
                             <form action="{{route("wishlist.store")}}" method="post">
                                 @csrf
@@ -82,7 +82,7 @@
                     </div>
                     <div class="">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <a href="/asdkasl" class="btn btn-danger">Pesan Sekarang</a>
+                        <a href="#" class="btn btn-danger checkout-btn">Pesan Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -104,6 +104,9 @@
                 success: response => {
                     $(".modal-body").html(response)
                     $("#product_id_modal").val(idProduct)
+
+                    const urlCheckout = "{{route("user.checkout", ":id")}}".replace(":id", idProduct)
+                    $(".checkout-btn").attr("href", urlCheckout)
                 }
             })
         }

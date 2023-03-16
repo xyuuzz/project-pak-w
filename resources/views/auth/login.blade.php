@@ -28,9 +28,8 @@
     ></script>
 </head>
 <body style="background-image: url('<?=asset("assets/images/login/bg.jpg")?>'); height: 100%;width: 100%; background-size: cover;";>
-
+@include('sweetalert::alert')
 <div class="card mx-auto" style="width: 30rem; margin-top: 60px; background-color:#ffd;">
-
     <div class="card-body">
 
         <h5 class="card-title text-center text-dark">Log In With</h5>

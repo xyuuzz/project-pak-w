@@ -47,19 +47,19 @@
                             <span class="">Produk Jersey</span></a>
                         <hr class="" style="width: 200px;">
                     </li>
-
-{{--                    <li class="nav-item" style="font-size: 15px;">--}}
-{{--                        <a class="nav-link text-dark" href="charts.html">--}}
-{{--                            <i class="fas fa-duotone fa-dollar-sign" style="font-size: 20px;"></i>--}}
-{{--                            <span class="">Pendapatan</span></a>--}}
-{{--                    </li>--}}
-{{--                    <hr class="" style="width: 200px;">--}}
                     <li class="nav-item" style="font-size: 15px;">
                         <a class="nav-link text-dark" href="{{route("promo.index")}}">
                             <i class="fas fa-solid fa-percent" style="font-size: 20px;"></i>
                             <span class="">Promo</span></a>
                     </li>
                     <hr class="" style="width: 200px;">
+                    <li class="nav-item" style="font-size: 15px;">
+                        <a class="nav-link text-dark" href="{{route("admin.list-pesanan")}}">
+                            <i class="fas fa-solid fa-chart-line" style="font-size: 20px;"></i>
+                            <span class="">Pesanan Pengguna</span></a>
+                    </li>
+                    <hr class="" style="width: 200px;">
+
                     <li class="nav-item" style="font-size: 15px;">
                         <a class="nav-link text-dark" href="charts.html">
                             <i class="fas fa-solid fa-chart-line" style="font-size: 20px;"></i>
@@ -100,6 +100,8 @@
 <script src="{{asset("assets/modules/jquery.min.js")}}"></script>
 <script src="{{asset("assets/modules/popper.js")}}"></script>
 <script src="{{asset("assets/modules/tooltip.js")}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <script src="{{asset("assets/modules/bootstrap/js/bootstrap.min.js")}}"></script>
 <script src="{{asset("assets/modules/nicescroll/jquery.nicescroll.min.js")}}"></script>
 <script src="{{asset("assets/modules/moment.min.js")}}"></script>
@@ -114,7 +116,6 @@
 <script src="{{asset("assets/js/custom.js")}}"></script>
 
 <script src="https://kit.fontawesome.com/98fc33a95e.js" crossorigin="anonymous"></script>
-
 @stack("scripts")
 
 </body>

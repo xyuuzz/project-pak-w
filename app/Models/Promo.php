@@ -30,10 +30,10 @@ class Promo extends Model
         return date("d-m-Y H:i", strtotime($value));
     }
 
-    public function getNewPriceAttribute($value)
-    {
-        return "Rp. " . number_format($value, 0, ",", ".");
-    }
+//    public function getNewPriceAttribute($value)
+//    {
+//        return "Rp. " . number_format($value, 0, ",", ".");
+//    }
 
     public function checkActive()
     {
@@ -43,5 +43,10 @@ class Promo extends Model
         } else {
             return false;
         }
+    }
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class, "promo_id");
     }
 }

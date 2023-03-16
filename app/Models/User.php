@@ -27,6 +27,8 @@ class User extends Authenticatable
         "social_type",
         "phone_number",
         "address",
+        "province",
+        "city",
     ];
 
     /**
@@ -54,6 +56,18 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function getProvinceAttribute($value)
+    {
+        if($value == null) return null;
+        return json_decode($value);
+    }
+
+    public function getCityAttribute($value)
+    {
+        if($value == null) return null;
+        return json_decode($value);
+    }
+
     public function isAdmin()
     {
         return $this->role === "admin";
@@ -67,5 +81,10 @@ class User extends Authenticatable
     public function wishlist()
     {
         return $this->hasMany(Wishlist::class);
+    }
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
     }
 }

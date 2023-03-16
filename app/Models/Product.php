@@ -13,21 +13,27 @@ class Product extends Model
         "description",
         "photo",
         "stock",
-        "size"
+        "size",
+        "weight",
     ];
 
     public function discountProduct()
     {
-        return $this->hasOne(Promo::class, "product_id")->where("start", "<=", now())->where("end", ">=", now());
+        return $this->hasOne(Promo::class, "product_id")->whereDate("start", "<=", now())->where("end", ">=", now());
     }
 
     public function discount()
     {
-        return $this->hasOne(Promo::class, "product_id");
+        return $this->hasMany(Promo::class, "product_id");
     }
 
     public function wishlist()
     {
         return $this->hasMany(Wishlist::class, "product_id");
+    }
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class, "product_id");
     }
 }

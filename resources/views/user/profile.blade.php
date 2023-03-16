@@ -12,17 +12,23 @@
                 <div class="col-md-8 ml-5 mt-4">
                     <h3 class="mb-4">Nama Akun: {{$user->name}}</h3>
                     <p>Email: {{$user->email}}</p>
-                    <p>Nomor Handphone aktif: {{$user->phone_number}}</p>
-                    <p>Alamat: {{$user->address}}</p>
-                    @if($user->social_id)
-                        <p class="text-warning mb-4">Merupakan akun yang login menggunakan <span class="text-dark font-weight-bold">{{Str::upper($user->social_type)}}</span></p>
+                    <p>Nomor Handphone aktif: {!! $user->phone_number ?? '<span class="text-warning">Nomor Handphone belum diisi</span>' !!}</p>
+
+                    @if($user->alamat)
+                        <p>Alamat: {{$user->address}} | <span class="btn btn-sm btn-primary">{{$user->province[1]}}</span> | <span class="btn btn-sm btn-info">{{$user->city[1]}}</span></p>
+                        @if($user->social_id)
+                            <p class="text-warning mb-4">Merupakan akun yang login menggunakan <span class="text-dark font-weight-bold">{{Str::upper($user->social_type)}}</span></p>
+                        @endif
+                    @else
+                        <p class="text-warning mb-4"><span class="text-dark">Alamat:</span> Alamat belum diisi</p>
                     @endif
 
                     <a href="{{route("user.edit")}}" class="btn btn-primary">Edit Profile</a>
-
-                    @if($user->social_id)
-                        <a href="{{route("user.destroy", $user->id)}}" class="btn btn-danger">Hapus Akun</a>
-                    @endif
+                    <form action="{{route("user.destroy")}}" method="post" class="d-inline-block ml-3">
+                        @csrf
+                        @method("DELETE")
+                        <button type="submit" class="btn btn-danger">Hapus Akun</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -55,7 +55,7 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a href="/asdkasl" class="btn btn-danger">Pesan Sekarang</a>
+                    <a href="{{route("user.checkout", ":id")}}" class="btn btn-danger order-btn">Pesan Sekarang</a>
                 </div>
             </div>
         </div>
@@ -77,6 +77,7 @@
                 success: response => {
                     $(".modal-body").html(response)
                     $("#product_id_modal").val(idProduct)
+                    $(".order-btn").attr("href", "{{route("user.checkout", ":id")}}".replace(":id", idProduct))
                 }
             })
         }

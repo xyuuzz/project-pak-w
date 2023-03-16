@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\App\Models\Product::class);
-            $table->integer("bukti_pembayaran");
-            $table->dateTime("transaction_date");
+            $table->integer("quantity");
+            $table->integer("total_price");
+            $table->string("bukti_pembayaran")->nullable();
+            $table->string("payment_method");
+            $table->string("shipping_method");
             $table->string("status");
             $table->timestamps();
         });

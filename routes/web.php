@@ -26,6 +26,19 @@ use \App\Http\Controllers\Socialite\{
 |
 */
 
+Route::get("/", function() {
+    $user = auth()->user();
+    if($user) {
+        if($user->role == "admin") {
+            return redirect()->route("admin.index");
+        } else {
+            return redirect()->route("user.index");
+        }
+    } else {
+        return redirect()->route("login");
+    }
+});
+
 Route::middleware("guest")->group(function() {
     Route::get("login", [AuthController::class, "login"])->name("login");
     Route::get("register", [AuthController::class, "register"])->name("register");
@@ -51,13 +64,22 @@ Route::middleware("auth")->group(function() {
         Route::get("user/edit", [UserController::class, "editUser"])->name("user.edit");
         Route::put("user/update", [UserController::class, "updateUser"])->name("user.update");
         Route::delete("user/delete", [UserController::class, "destroyUser"])->name("user.destroy");
+        Route::get("checkout/{product}", [UserController::class, "checkout"])->name("user.checkout");
+        Route::post("user/checkout/create-transaction-product/{product}", [UserController::class, "createTransaction"])->name("user.create-transaction");
+        Route::post("user/transaction/upload-bukti-pembayaran", [UserController::class, "uploadBuktiPembayaran"])->name("user.transaction.upload-bukti-pembayaran");
+        Route::get("user/order", [UserController::class, "order"])->name("user.order");
+        Route::put("/user/order/{transaction}/pesanan-telah-diterima", [UserController::class, "pesananTelahDiterima"])->name("user.transaction.pesanan-telah-diterima");
     });
 
     Route::middleware("can:admin")->group(function() {
         Route::get("admin", [AdminController::class, "index"])->name("admin.index");
         Route::resource("promo", PromoController::class);
-
+        Route::get("list-pesanan", [AdminController::class, "listPesanan"])->name("admin.list-pesanan");
+        Route::prefix("admin.pesanan")->group(function() {
+            Route::put("update-status/{transaction}/{desc}", [AdminController::class, "updateStatusPesanan"])->name("admin.pesanan.update-status");
+        });
     });
 
+    Route::get("user/get-city", [UserController::class, "getCity"])->name("user.get-city");
     Route::resource("product", ProductController::class);
 });

@@ -32,6 +32,7 @@
     <!-- /END GA --></head>
 
 <body>
+@include('sweetalert::alert')
 <div id="app">
     @include('sweetalert::alert')
     <div class="main-wrapper main-wrapper-1">
@@ -45,7 +46,7 @@
                 <ul class="menu">
                     <li><a href="{{route("user.index")}}"><i class="fa-solid fa-home"></i>Beranda</a></li>
                     <li><a href="{{route("user.profile")}}"><i class="fa-solid fa-user"></i><span>Akun Saya</span> </a></li>
-                    <li><a href="#"><i class="fa-solid fa-cart-shopping"></i>Pesanan Saya</a></li>
+                    <li><a href="{{route("user.order")}}"><i class="fa-solid fa-cart-shopping"></i>Pesanan Saya</a></li>
                     <li><a href="{{route("wishlist.index")}}"><i class="fa-solid fa-star"></i>Wish List</a></li>
                 </ul>
                 <!-- logout -->
