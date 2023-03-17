@@ -36,4 +36,9 @@ class Product extends Model
     {
         return $this->hasMany(Transaction::class, "product_id");
     }
+
+    public function promos()
+    {
+        return $this->hasMany(Product::class, "product_id");
+    }
 }

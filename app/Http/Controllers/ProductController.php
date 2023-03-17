@@ -44,7 +44,8 @@ class ProductController extends Controller
             "description" => "required",
             "photo" => "required|file",
             "stock" => "required|numeric",
-            "size" => "required"
+            "size" => "required",
+            "weight" => "required"
         ]);
 
         $image = $request->file("photo");
@@ -54,7 +55,8 @@ class ProductController extends Controller
         $data["photo"] = $image_name;
 
         Product::create($data);
-        return redirect()->route("products.index");
+        Alert::success("Success", "Berhasil menambahkan produk jersey baru");
+        return redirect()->route("product.index");
     }
 
     /**
@@ -107,9 +109,10 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         unlink("storage/product_photo/" . $product->photo);
+        $product->promos->delete();
         $product->delete();
 
         Alert::success("Success", "Product has been deleted");
-        return redirect()->route("products.index");
+        return redirect()->route("product.index");
     }
 }

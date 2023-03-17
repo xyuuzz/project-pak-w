@@ -55,7 +55,7 @@ class UserController extends Controller
         $provinces = RajaOngkirController::provinces();
 
         $user = auth()->user();
-        $cities = $user->alamat ? RajaOngkirController::cities($user->province[0]) : [];
+        $cities = $user->address ? RajaOngkirController::cities($user->province[0]) : [];
 
         return view("user.edit", compact("user", "provinces", "cities"));
     }
@@ -106,7 +106,7 @@ class UserController extends Controller
 
     public function checkout(Product $product)
     {
-        if(auth()->user()->alamat == null) {
+        if(auth()->user()->address == null) {
             Alert::error("Error", "Please fill your address first");
             return redirect()->route("user.edit");
         } else if(auth()->user()->phone_number == null) {

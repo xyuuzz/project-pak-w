@@ -14,7 +14,11 @@
                     <label for="name" class="form-label">Nama Produk</label>
                     <input style="background-color: rgb(141,127,107); color: white;" type="text" class="form-control border-0" id="name" name="name">
                 </div>
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-2">
+                    <label for="weight" class="form-label">Berat Produk</label>
+                    <input style="background-color: rgb(141,127,107); color: white;" type="text" class="form-control border-0" id="weight" name="weight">
+                </div>
+                <div class="mb-3 col-lg-1">
                     <label for="size" class="form-label">Ukuran Produk</label>
                     <select style="background-color: rgb(141,127,107); color: white;" class="form-control border-0" id="size" name="size">
                         <option selected>Pilih Ukuran</option>

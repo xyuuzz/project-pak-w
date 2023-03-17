@@ -60,7 +60,7 @@
                             <button data-toggle="modal" data-target="#batalkanPesanan{{$transaction->id}}" class="btn btn-danger d-inline p-2">Batalkan pesanan</button>
                         @else
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="badge badge-warning"><h5>-</h5></span>
+                                <span class="badge badge-warning">Menunggu konfirmasi barang diterima</span>
                             </div>
                         @endif
                     </td>

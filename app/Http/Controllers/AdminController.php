@@ -34,6 +34,12 @@ class AdminController extends Controller
             $image->move("storage/bukti_pengiriman_jersey", $image_name);
             $transaction->bukti_telah_dikirim = $image_name;
         }
+        if($desc == "diproses") {
+            $product = $transaction->product;
+            $product->update([
+                "stock" => $product->stock - $transaction->quantity
+            ]);
+        }
 
         $transaction->status = $desc;
         $transaction->save();

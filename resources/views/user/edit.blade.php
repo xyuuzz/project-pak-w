@@ -26,7 +26,7 @@
                         <select onchange="setCityValue(this)" required name="province" id="province" class="form-control">
                             <option value="">Pilih Provinsi</option>
                             @foreach($provinces as $province)
-                                @if($user->alamat)
+                                @if($user->address)
                                     <option @if($user->province[0] == $province["province_id"]) selected @endif value="{{$province["province_id"]}}:{{$province["province"]}}">{{$province["province"]}}</option>
                                 @else
                                     <option value="{{$province["province_id"]}}:{{$province["province"]}}">{{$province["province"]}}</option>
@@ -38,7 +38,7 @@
                             <select required name="city" id="city" class="form-control">
                                 <option value="">Pilih Kota</option>
                                 @foreach($cities as $city)
-                                    @if($user->alamat)
+                                    @if($user->address)
                                         <option @if($user->city[0] == $city["city_id"]) selected @endif value="{{$city["city_id"]}}:{{$city["type"]}} {{$city["city_name"]}}">{{$city["type"]}} {{$city["city_name"]}}</option>
                                     @else
                                         <option value="{{$city["city_id"]}}:{{$city["type"]}} {{$city["city_name"]}}">{{$city["type"]}} {{$city["city_name"]}}</option>

@@ -12,7 +12,7 @@
             <div class="row justify-content-between col-lg-9">
                 <div class="mb-3 col-lg-8">
                     <label for="product_id" class="form-label">Produk</label>
-                    <select style="background-color: rgb(141,127,107); color: white;" class="form-control border-0" id="product_id" name="produk_id">
+                    <select style="background-color: rgb(141,127,107); color: white;" class="form-control border-0" id="product_id" name="product_id">
                         <option value="" selected>Pilih Produk untuk dipromokan</option>
                         @foreach($products as $product)
                             <option value="{{$product->id}}">{{$product->name}} | Harga Asli: <span class="harga-asli">{{$product->price}}</span></option>

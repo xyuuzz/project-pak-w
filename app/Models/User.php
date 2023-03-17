@@ -68,6 +68,16 @@ class User extends Authenticatable
         return json_decode($value);
     }
 
+    public function getPhotoProfileAttribute($value)
+    {
+
+        if(substr($value, 0, 4) != "http") {
+            return asset("storage/photo_profiles/" . $value);
+        } else {
+            return $value;
+        }
+    }
+
     public function isAdmin()
     {
         return $this->role === "admin";

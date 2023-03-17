@@ -57,15 +57,16 @@
         <div class="main-content">
             <section class="section">
                 <div class="top-bar">
-                    <!-- saldo(php) -->
                     <div class="saldo">
-                        <span>saldo jerseypay anda:</span>
+                        <span class="font-weight-bold">saldo jerseypay anda:</span>
                         <h3>Rp. xxx. xxx</h3>
                     </div>
                     <div class="icon">
-                        <i class="fa-solid fa-wallet"></i>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <i class="fa-solid fa-user"></i>
+{{--                        <i class="fa-solid fa-wallet"></i>--}}
+{{--                        <i class="fa-solid fa-cart-shopping"></i>--}}
+                        <a href="{{route("user.profile")}}">
+                            <img class="rounded-circle" width="50px" src="{{auth()->user()->photo_profile}}" alt="photo profile">
+                        </a>
                     </div>
                 </div>
                 <div class="section-body">

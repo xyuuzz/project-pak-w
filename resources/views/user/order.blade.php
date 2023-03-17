@@ -35,7 +35,7 @@
                                         <h6 class="h6 mb-3">: JNE | {{$transaction->shipping_method}}</h6>
                                     </div>
                                 </div>
-                                <small class="text-primary">Alamat Tujuan: <span class="pl-3 pt-5" style="font-size: 16px">{{auth()->user()->address}}, Kota {{auth()->user()->city[1]}}, {{auth()->user()->province[1]}}</span></small>
+                                <small class="text-primary">Alamat Tujuan: <span class="pl-3 pt-5" style="font-size: 16px">{{auth()->user()->address}}, {{auth()->user()->city[1]}}, {{auth()->user()->province[1]}}</span></small>
                             </div>
                             <div class="col-lg-6 border-left border-warning">
                                 @if($transaction->status == "pending" && $transaction->bukti_pembayaran == null)
@@ -50,7 +50,7 @@
                                     <input type="hidden" name="transaction_id" value="{{$transaction->id}}">
                                     <button type="submit" class="btn btn-primary mt-3">Upload</button>
                                 </form>
-                                @elseif($transaction->status == "pending" && $transaction->bukti_pembayaran != null)
+                                @elseif($transaction->status == "menunggu_konfirmasi")
                                     <div class="text-dark" style="font-size: 16px">Bukti pembayaran berhasil diupload!</div>
                                     <hr>
                                     <div class="text-dark" style="font-size: 16px">Tunggu admin untuk mengkonfirmasi pembayaranmu!</div>

@@ -14,7 +14,7 @@
                     <p>Email: {{$user->email}}</p>
                     <p>Nomor Handphone aktif: {!! $user->phone_number ?? '<span class="text-warning">Nomor Handphone belum diisi</span>' !!}</p>
 
-                    @if($user->alamat)
+                    @if($user->address)
                         <p>Alamat: {{$user->address}} | <span class="btn btn-sm btn-primary">{{$user->province[1]}}</span> | <span class="btn btn-sm btn-info">{{$user->city[1]}}</span></p>
                         @if($user->social_id)
                             <p class="text-warning mb-4">Merupakan akun yang login menggunakan <span class="text-dark font-weight-bold">{{Str::upper($user->social_type)}}</span></p>

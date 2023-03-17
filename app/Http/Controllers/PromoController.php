@@ -41,10 +41,10 @@ class PromoController extends Controller
             "description" => "required",
             "start" => "required|date|after:now",
             "end" => "required|date|after:start",
-            "new_price" => "required|numeric"
+            "new_price" => "required"
         ]);
 
-        if($data["new_price"] > Product::firstWhere($data["product_id"])->price) {
+        if($data["new_price"] > Product::firstWhere($data["product_id"])?->price) {
             Alert::error("Error", "New price must be lower than the original price");
             return redirect()->back();
         }
@@ -52,7 +52,7 @@ class PromoController extends Controller
         Promo::create($data);
 
         Alert::success("Success", "Promo has been added");
-        return redirect()->route("promos.index");
+        return redirect()->route("promo.index");
     }
 
     /**

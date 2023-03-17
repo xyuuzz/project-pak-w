@@ -4,6 +4,7 @@
         <p>Nama Produk: {{$product->name}}</p>
         <p>Harga: Rp. {{number_format($product->price, 2)}}</p>
         <p>Ukuran: {{$product->size}}</p>
+        <p>Stok: {{$product->stock}}</p>
     </div>
 </div>
 <p>Deskripsi lengkap: {{$product->description}}</p>

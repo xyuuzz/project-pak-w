@@ -28,9 +28,9 @@
                 <td>{{$promo->end}}</td>
 {{--                status promo: berjalan, sudah berakhir, belum dimulai,, sesuai tanggal, jam dan menit, bukan tanggal saja--}}
                 <td>
-                    @if(now()->diffInMinutes(\Carbon\Carbon::parse($promo->start)) < 420 && now()->diffInMinutes(\Carbon\Carbon::parse($promo->end)) > 420)
+                    @if(now()->diffInMinutes(\Carbon\Carbon::parse($promo->start)) == 1 && now()->diffInMinutes(\Carbon\Carbon::parse($promo->end)) > 0)
                         <span class="badge badge-success">Berjalan</span>
-                    @elseif(now()->diffInMinutes(\Carbon\Carbon::parse($promo->start)) > 420)
+                    @elseif(now()->diffInMinutes(\Carbon\Carbon::parse($promo->start)) > 0)
                         <span class="badge badge-warning">Belum dimulai</span>
                     @else
                         <span class="badge badge-danger">Sudah berakhir</span>
